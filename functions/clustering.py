@@ -61,3 +61,17 @@ def rank_years(fit_df):
     
     # print our results grouped by year for each cluster
     print(fit_df.groupby('k_cluster')['Year'].mean().sort_values())
+
+def visualize_variables(df1, str1, str2):
+    data_subset = df1[df1['k_cluster'].isin([0, 7])]
+    plt.figure(figsize=(5, 5))
+    for cluster in [0, 7]:
+        cluster_data = data_subset[data_subset['k_cluster'] == cluster]
+        plt.scatter(cluster_data[str1],
+                    cluster_data[str2],
+                    label=f'Cluster {cluster}',alpha=0.5)
+    
+    plt.xlabel(str1)
+    plt.ylabel(str2)
+    plt.title(str1 + ' vs ' + str2 + '(Clusters 0 & 7)')
+    plt.show()
