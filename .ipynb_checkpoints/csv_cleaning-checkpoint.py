@@ -33,7 +33,7 @@ def remove_links(df_input):
 
     RETURNS: pandas DF with link columns removed
     """
-    return df_input[['Song Title', 'Artist', 'Lyrics', 'Year']]
+    return df_input[['Song Title', 'Artist', 'Lyrics', 'Year', 'Rank']]
 
 def remove_nan(df_input):
     """

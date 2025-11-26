@@ -33,7 +33,7 @@ def remove_links(df_input):
 
     RETURNS: pandas DF with link columns removed
     """
-    return df_input[['Song Title', 'Artist', 'Lyrics', 'Year']]
+    return df_input[['Song Title', 'Artist', 'Lyrics', 'Year', 'Rank']]
 
 def remove_nan(df_input):
     """
@@ -47,7 +47,11 @@ def remove_nan(df_input):
 
 def clean_data(df_input):
     """
+    Performs remove_links and remove_nan functions on a raw csv.
 
+    INPUT(S): pandas dataframe
+
+    RETURNS: pandas DF with remove_nan and remove_links performed
     """
     df_1 = remove_links(df_input).copy()
     df_2 = remove_nan(df_1).copy()
