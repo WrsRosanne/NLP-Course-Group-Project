@@ -73,5 +73,6 @@ def visualize_variables(df1, str1, str2, clusterA, clusterB):
     
     plt.xlabel(str1)
     plt.ylabel(str2)
-    plt.title(str1 + ' vs ' + str2 + ' (Clusters) ' + str(clusterA) + ' & ' + str(clusterB))
+    plt.title(str1 + ' vs ' + str2 + ', Clusters ' + str(clusterA) + ' & ' + str(clusterB))
+    plt.legend()
     plt.show()
