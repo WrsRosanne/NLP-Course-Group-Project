@@ -53,19 +53,19 @@ def cluster_model(cluster_df, X_scaled, n):
     cluster_df['k_cluster'] = results
     return cluster_df
 
-def rank_years(fit_df):
-    max_year = fit_df['Year'].max()
-    min_year = fit_df['Year'].min()
-    print(f"Max year: {max_year}")
-    print(f"Min year: {min_year}")
+def rank_var(fit_df, str1):
+    max_year = fit_df[str1].max()
+    min_year = fit_df[str1].min()
+    print(f"Max: {max_year}")
+    print(f"Min: {min_year}")
     
     # print our results grouped by year for each cluster
-    print(fit_df.groupby('k_cluster')['Year'].mean().sort_values())
+    print(fit_df.groupby('k_cluster')[str1].mean().sort_values())
 
-def visualize_variables(df1, str1, str2):
-    data_subset = df1[df1['k_cluster'].isin([0, 7])]
+def visualize_variables(df1, str1, str2, clusterA, clusterB):
+    data_subset = df1[df1['k_cluster'].isin([clusterA, clusterB])]
     plt.figure(figsize=(5, 5))
-    for cluster in [0, 7]:
+    for cluster in [clusterA, clusterB]:
         cluster_data = data_subset[data_subset['k_cluster'] == cluster]
         plt.scatter(cluster_data[str1],
                     cluster_data[str2],
@@ -73,5 +73,5 @@ def visualize_variables(df1, str1, str2):
     
     plt.xlabel(str1)
     plt.ylabel(str2)
-    plt.title(str1 + ' vs ' + str2 + '(Clusters 0 & 7)')
+    plt.title(str1 + ' vs ' + str2 + ' (Clusters) ' + str(clusterA) + ' & ' + str(clusterB))
     plt.show()
